@@ -1,6 +1,12 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
+
+provider "aws" {
+  region = "us-east-2"
+}
+
+
 terraform {
   required_providers {
     aws = {
@@ -15,16 +21,16 @@ terraform {
   required_version = ">= 1.1.0"
 
   cloud {
-    organization = "REPLACE_ME"
+    organization = "testADO"
 
     workspaces {
-      name = "gh-actions-demo"
+      name = "learn-terraform-github-actions"
     }
   }
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-2"
 }
 
 resource "random_pet" "sg" {}
@@ -42,7 +48,7 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["099720109477"] # Canonical
+  owners = ["129762072419"] # Canonical
 }
 
 resource "aws_instance" "web" {
